@@ -1,0 +1,29 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "YOUR_PROJECT_ID",
+          "appId": "YOUR_ANDROID_APP_ID",
+          "apiKey": "YOUR_ANDROID_API_KEY",
+          "storageBucket": "YOUR_PROJECT_ID.appspot.com"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "YOUR_PROJECT_ID",
+          "appId": "YOUR_IOS_APP_ID",
+          "apiKey": "YOUR_IOS_API_KEY",
+          "storageBucket": "YOUR_PROJECT_ID.appspot.com"
+        }
+      }
+    }
+  }
+}

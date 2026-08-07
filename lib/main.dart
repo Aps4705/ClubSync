@@ -7,7 +7,6 @@ import 'core/router.dart';
 import 'core/theme/app_theme.dart';
 import 'firebase_options.dart';
 
-// Background message handler — must be top-level function
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -19,9 +18,7 @@ void main() async {
   try {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   } on FirebaseException catch (e) {
-    // 'duplicate-app' is the only error that genuinely means "already
-    // initialized" (e.g. hot restart). Anything else is a real startup
-    // failure (bad config, no network, etc.) and must not be swallowed.
+  
     if (e.code != 'duplicate-app') {
       debugPrint('Firebase init failed: ${e.code} - ${e.message}');
       rethrow;

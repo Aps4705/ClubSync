@@ -48,11 +48,11 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       if (isLoggedIn && isVerified && isVerifyRoute) return '/home';
 
-      if (isLoggedIn && isVerified && isAuthRoute) {
+      if (isLoggedIn && isVerified && !isOnboarding) {
         final prefs = await SharedPreferences.getInstance();
         final done = prefs.getBool('onboarding_done') ?? false;
         if (!done) return '/onboarding';
-        return '/home';
+        if (isAuthRoute) return '/home';
       }
       return null;
     },

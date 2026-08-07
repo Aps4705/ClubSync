@@ -111,6 +111,7 @@ class _ClubDetailViewState extends State<_ClubDetailView>
                 child: Container(
                   margin: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                     color: Colors.white.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -125,11 +126,13 @@ class _ClubDetailViewState extends State<_ClubDetailView>
                     club.bannerUrl != null && club.bannerUrl!.isNotEmpty
                         ? NetworkImageWidget(imageUrl: club.bannerUrl)
                         : Container(
-                            decoration: const BoxDecoration(gradient: AppColors.heroGradient),
+                            decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),gradient: AppColors.heroGradient),
                           ),
                     // Dark overlay
                     Container(
                       decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                         gradient: LinearGradient(
                           colors: [
                             Colors.transparent,
@@ -151,6 +154,7 @@ class _ClubDetailViewState extends State<_ClubDetailView>
                             width: 68,
                             height: 68,
                             decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(16),
                               boxShadow: [
@@ -405,6 +409,7 @@ _ClubEventsTab(clubId: club.id),
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: AppShadows.card,
@@ -424,6 +429,7 @@ _ClubEventsTab(clubId: club.id),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 4),
                               decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                                 color: isOpen
                                     ? AppColors.successBg
                                     : AppColors.errorBg,
@@ -449,6 +455,7 @@ _ClubEventsTab(clubId: club.id),
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 10),
                           decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                             gradient: AppColors.primaryGradient,
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: AppShadows.elevated,
@@ -589,6 +596,7 @@ class _TeamCard extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                 gradient: AppColors.primaryGradient,
                 borderRadius: BorderRadius.circular(AppRadius.full),
               ),
@@ -638,6 +646,7 @@ class _ClubEventsTab extends ConsumerWidget {
               opacity: isPast ? 0.6 : 1.0,
               child: Container(
                 decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: AppShadows.card,
@@ -647,6 +656,7 @@ class _ClubEventsTab extends ConsumerWidget {
                     Container(
                       width: 60,
                       decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                         gradient: isPast
                             ? const LinearGradient(colors: [Color(0xFF9CA3AF), Color(0xFF6B7280)])
                             : AppColors.primaryGradient,
@@ -700,6 +710,7 @@ class _ClubEventsTab extends ConsumerWidget {
                           ? Container(
                               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                               decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                                 color: AppColors.surfaceVariant,
                                 borderRadius: BorderRadius.circular(8),
                               ),

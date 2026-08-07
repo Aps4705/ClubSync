@@ -223,6 +223,7 @@ class _UserAdminCard extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                   color: AppColors.errorBg,
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -235,6 +236,7 @@ class _UserAdminCard extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                   gradient: AppColors.primaryGradient,
                   borderRadius: BorderRadius.circular(8),
                   boxShadow: AppShadows.elevated,
@@ -316,6 +318,7 @@ class _ClubLogoCard extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
         boxShadow: AppShadows.card,
@@ -338,6 +341,7 @@ class _ClubLogoCard extends ConsumerWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                 color: AppColors.primaryLighter,
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -413,7 +417,8 @@ class _EmptyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: AppColors.surfaceVariant, borderRadius: BorderRadius.circular(12)),
+      decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: AppColors.surfaceVariant, borderRadius: BorderRadius.circular(12)),
       child: Text(text, style: const TextStyle(color: AppColors.textMuted)),
     );
   }
@@ -457,6 +462,7 @@ class _ClubContactCard extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
         boxShadow: AppShadows.card,
@@ -491,6 +497,7 @@ class _ClubContactCard extends ConsumerWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                 color: AppColors.primaryLighter,
                 borderRadius: BorderRadius.circular(8),
               ),

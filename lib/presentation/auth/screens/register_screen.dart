@@ -177,6 +177,7 @@ Future<void> _register() async {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                     color: AppColors.error.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(AppRadius.md),
                   ),

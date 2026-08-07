@@ -282,7 +282,12 @@ class _AutoSliderState extends State<_AutoSlider> {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Container(
-                  decoration: BoxDecoration(gradient: item.gradient, borderRadius: BorderRadius.circular(16)),
+                  decoration: BoxDecoration(
+                    gradient: item.gradient,
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(color: AppColors.ink, width: 2.5),
+                    boxShadow: AppShadows.card,
+                  ),
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -311,9 +316,13 @@ class _AutoSliderState extends State<_AutoSlider> {
                         onTap: item.onTap,
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-                          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8)),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: AppColors.ink, width: 2),
+                          ),
                           child: Text(item.isLive ? 'Register Now' : 'View Details',
-                              style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.w600, fontSize: 12)),
+                              style: const TextStyle(color: AppColors.ink, fontWeight: FontWeight.w700, fontSize: 12)),
                         ),
                       ),
                     ],
@@ -364,6 +373,7 @@ class _HeroHeader extends StatelessWidget {
           bottomLeft: Radius.circular(28),
           bottomRight: Radius.circular(28),
         ),
+        border: Border(bottom: BorderSide(color: AppColors.ink, width: 2.5)),
       ),
       child: SafeArea(
         bottom: false,
@@ -436,17 +446,17 @@ class _StatChip extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.15),
+          color: Colors.white.withValues(alpha: 0.92),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
+          border: Border.all(color: AppColors.ink, width: 2),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(icon, color: Colors.white.withValues(alpha: 0.8), size: 16),
+            Icon(icon, color: AppColors.ink, size: 16),
             const SizedBox(height: 6),
-            Text(value, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 18)),
-            Text(label, style: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: 11)),
+            Text(value, style: const TextStyle(color: AppColors.ink, fontWeight: FontWeight.w800, fontSize: 18)),
+            Text(label, style: const TextStyle(color: AppColors.textSecondary, fontSize: 11)),
           ],
         ),
       ),
@@ -487,7 +497,7 @@ class _SearchResults extends ConsumerWidget {
                       onTap: () => context.push('/clubs/${c.id}'),
                       child: Container(
                         padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12), boxShadow: AppShadows.card),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14), border: Border.all(color: AppColors.ink, width: 2), boxShadow: AppShadows.small),
                         child: Row(children: [
                           ClubAvatar(imageUrl: c.logoUrl, name: c.name, size: 40),
                           const SizedBox(width: 10),
@@ -524,11 +534,15 @@ class _SearchResults extends ConsumerWidget {
                       onTap: () => context.push('/events/${e.id}'),
                       child: Container(
                         padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12), boxShadow: AppShadows.card),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14), border: Border.all(color: AppColors.ink, width: 2), boxShadow: AppShadows.small),
                         child: Row(children: [
                           Container(
                             width: 40, height: 40,
-                            decoration: BoxDecoration(gradient: AppColors.primaryGradient, borderRadius: BorderRadius.circular(10)),
+                            decoration: BoxDecoration(
+                              gradient: AppColors.primaryGradient,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: AppColors.ink, width: 1.5),
+                            ),
                             child: Center(child: Text(DateFormat('d').format(e.date), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700))),
                           ),
                           const SizedBox(width: 10),
@@ -582,14 +596,14 @@ class _ClubCategoryRow extends StatelessWidget {
               Container(
                 width: 52, height: 52,
                 decoration: BoxDecoration(
-                  color: c.$3.withValues(alpha: 0.1),
+                  color: c.$3.withValues(alpha: 0.14),
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: c.$3.withValues(alpha: 0.2)),
+                  border: Border.all(color: AppColors.ink, width: 2),
                 ),
                 child: Icon(c.$2, color: c.$3, size: 24),
               ),
               const SizedBox(height: 6),
-              Text(c.$1, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w500, color: AppColors.textSecondary)),
+              Text(c.$1, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: AppColors.textSecondary)),
             ]),
           ),
         )).toList(),
@@ -614,14 +628,23 @@ class _EventTimelineCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 10),
+        margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(14),
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14), boxShadow: AppShadows.card),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: AppColors.ink, width: 2.5),
+          boxShadow: AppShadows.small,
+        ),
         child: Row(
           children: [
             Container(
               width: 48, height: 52,
-              decoration: BoxDecoration(gradient: AppColors.primaryGradient, borderRadius: BorderRadius.circular(10)),
+              decoration: BoxDecoration(
+                gradient: AppColors.primaryGradient,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: AppColors.ink, width: 2),
+              ),
               child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(month, style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w600)),
                 Text(day, style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700, height: 1.1)),
@@ -657,15 +680,24 @@ class _AnnouncementTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14), boxShadow: AppShadows.card),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.ink, width: 2.5),
+        boxShadow: AppShadows.small,
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: 38, height: 38,
-            decoration: BoxDecoration(gradient: AppColors.primaryGradient, borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(
+              gradient: AppColors.primaryGradient,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: AppColors.ink, width: 2),
+            ),
             child: const Icon(Icons.campaign_outlined, color: Colors.white, size: 18),
           ),
           const SizedBox(width: 12),
@@ -692,7 +724,11 @@ class _EmptySection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: AppColors.surfaceVariant, borderRadius: BorderRadius.circular(AppRadius.md)),
+      decoration: BoxDecoration(
+        color: AppColors.surfaceVariant,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        border: Border.all(color: AppColors.ink, width: 2, style: BorderStyle.solid),
+      ),
       child: Text(text, style: Theme.of(context).textTheme.bodyMedium),
     );
   }

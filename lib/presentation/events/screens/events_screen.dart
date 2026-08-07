@@ -74,6 +74,7 @@ SliverToBoxAdapter(
       height: 40,
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: AppShadows.subtle,
@@ -168,6 +169,7 @@ class _Tab extends StatelessWidget {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 180),
           decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
             gradient: selected ? AppColors.primaryGradient : null,
             borderRadius: BorderRadius.circular(9),
           ),
@@ -195,6 +197,7 @@ class _IconBtn extends StatelessWidget {
       child: Container(
         width: 38, height: 38,
         decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: AppShadows.subtle,
@@ -222,6 +225,7 @@ class EventListCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
           boxShadow: AppShadows.card,
@@ -230,7 +234,8 @@ class EventListCard extends StatelessWidget {
           children: [
             Container(
               width: 64,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                 gradient: AppColors.primaryGradient,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(16),

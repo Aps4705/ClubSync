@@ -34,7 +34,8 @@ class ClubsScreen extends ConsumerWidget {
           // Blue header banner
           SliverToBoxAdapter(
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                 gradient: AppColors.heroGradient,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(28),
@@ -261,6 +262,7 @@ class _ClubRowCardState extends ConsumerState<ClubRowCard> {
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
           boxShadow: AppShadows.card,
@@ -302,6 +304,7 @@ class _ClubRowCardState extends ConsumerState<ClubRowCard> {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
                         decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                           color: isOpen ? AppColors.successBg : AppColors.errorBg,
                           borderRadius: BorderRadius.circular(20),
                         ),

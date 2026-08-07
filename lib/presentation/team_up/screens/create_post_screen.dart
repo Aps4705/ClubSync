@@ -37,9 +37,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
     super.dispose();
   }
 
-  /// Matches the parsing rules used by the "Connect" button in
-  /// team_up_screen.dart — must be a valid email, phone number, or http(s)
-  /// link, otherwise the Connect button can't do anything useful with it.
+  
   static final _emailRegex = RegExp(r'^[\w\.\-]+@[\w\-]+\.[\w\.\-]+$');
   static final _phoneRegex = RegExp(r'^\+?[0-9\s\-()]{7,15}$');
 
@@ -245,6 +243,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
                   child: Container(
                     width: 48, height: 48,
                     decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                       gradient: AppColors.primaryGradient,
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: AppShadows.elevated,

@@ -55,9 +55,7 @@ class _EditProfileFormState extends ConsumerState<_EditProfileForm> {
   bool _saving = false;
   bool _uploadingAvatar = false;
 
-  // Branches/years the user is currently saved with might not exactly match
-  // the canonical constants list (e.g. legacy/bad data), so we make sure the
-  // dropdown always has a matching value to avoid a Flutter assertion crash.
+  
   late final List<String> _branchItems;
   late final List<String> _yearItems;
 
@@ -305,7 +303,7 @@ class _EditProfileFormState extends ConsumerState<_EditProfileForm> {
       );
 }
 
-// ─── Small local dropdown, matches the register screen's style ───────────────
+
 
 class _Dropdown extends StatelessWidget {
   final String value;

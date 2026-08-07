@@ -37,6 +37,7 @@ class HelpSupportScreen extends ConsumerWidget {
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                   color: AppColors.primaryLighter,
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -81,6 +82,7 @@ class _PresidentContactTile extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
         boxShadow: AppShadows.card,
@@ -119,6 +121,7 @@ class _PresidentContactTile extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                 color: AppColors.surfaceVariant,
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -139,7 +142,8 @@ class _EmptyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: AppColors.surfaceVariant, borderRadius: BorderRadius.circular(12)),
+      decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: AppColors.surfaceVariant, borderRadius: BorderRadius.circular(12)),
       child: Text(text, style: const TextStyle(color: AppColors.textMuted)),
     );
   }

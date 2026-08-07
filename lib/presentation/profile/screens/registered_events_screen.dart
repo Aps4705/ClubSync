@@ -13,8 +13,7 @@ final _registeredEventsProvider = StreamProvider<List<EventModel>>((ref) async* 
     yield [];
     return;
   }
-  // Query only the registered events directly instead of fetching the
-  // entire events collection and filtering client-side.
+ 
   yield* ref.watch(eventsServiceProvider).getEventsByIds(user.registeredEvents);
 });
 
@@ -46,8 +45,7 @@ class RegisteredEventsScreen extends ConsumerWidget {
                 )
               : eventsAsync.when(
                   data: (fetchedEvents) {
-                    // eventsAsync now already contains only the registered
-                    // events (fetched via getEventsByIds); just sort them.
+                   
                     final registered = [...fetchedEvents]
                       ..sort((a, b) => a.date.compareTo(b.date));
 
@@ -116,6 +114,7 @@ class _EventCard extends StatelessWidget {
         opacity: isPast ? 0.6 : 1.0,
         child: Container(
           decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
             boxShadow: AppShadows.card,
@@ -125,6 +124,7 @@ class _EventCard extends StatelessWidget {
               Container(
                 width: 64,
                 decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                   gradient: isPast
                       ? const LinearGradient(colors: [Color(0xFF9CA3AF), Color(0xFF6B7280)])
                       : AppColors.primaryGradient,
@@ -169,6 +169,7 @@ class _EventCard extends StatelessWidget {
                     ? Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                         decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                           color: AppColors.surfaceVariant,
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -177,6 +178,7 @@ class _EventCard extends StatelessWidget {
                     : Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                         decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                           color: AppColors.successBg,
                           borderRadius: BorderRadius.circular(8),
                         ),

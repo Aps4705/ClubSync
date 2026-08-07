@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import '../theme/app_theme.dart';
 
-//Gradient Button
+// Neo Button — solid fill, thick black border, hard offset shadow.
+// Press animation pushes the button into its own shadow (classic neubrutalist tap).
 
-class GradientButton extends StatelessWidget {
+class GradientButton extends StatefulWidget {
   final String label;
   final VoidCallback? onTap;
   final double? width;
@@ -14,55 +15,68 @@ class GradientButton extends StatelessWidget {
   final double borderRadius;
   final Widget? icon;
   final bool isLoading;
+  final Color? color;
 
   const GradientButton({
     super.key,
     required this.label,
     this.onTap,
     this.width,
-    this.height = 48,
+    this.height = 50,
     this.borderRadius = AppRadius.md,
     this.icon,
     this.isLoading = false,
+    this.color,
   });
 
   @override
+  State<GradientButton> createState() => _GradientButtonState();
+}
+
+class _GradientButtonState extends State<GradientButton> {
+  bool _pressed = false;
+
+  @override
   Widget build(BuildContext context) {
+    final disabled = widget.onTap == null || widget.isLoading;
+    final fill = disabled ? const Color(0xFFDAD7CE) : (widget.color ?? AppColors.primary);
+
     return GestureDetector(
-      onTap: isLoading ? null : onTap,
-      child: Container(
-        width: width,
-        height: height,
+      onTapDown: disabled ? null : (_) => setState(() => _pressed = true),
+      onTapCancel: () => setState(() => _pressed = false),
+      onTapUp: (_) => setState(() => _pressed = false),
+      onTap: disabled ? null : widget.onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 90),
+        width: widget.width,
+        height: widget.height,
+        transform: Matrix4.translationValues(
+          _pressed ? 3 : 0, _pressed ? 3 : 0, 0,
+        ),
         decoration: BoxDecoration(
-          gradient: onTap == null
-              ? LinearGradient(
-                  colors: [Colors.grey.shade300, Colors.grey.shade400],
-                )
-              : AppColors.primaryGradient,
-          borderRadius: BorderRadius.circular(borderRadius),
-          boxShadow: onTap != null ? AppShadows.elevated : [],
+          color: fill,
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+          border: Border.all(color: AppColors.ink, width: 2.5),
+          boxShadow: disabled || _pressed ? [] : AppShadows.small,
         ),
         child: Center(
-          child: isLoading
+          child: widget.isLoading
               ? const SizedBox(
                   width: 20,
                   height: 20,
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
-                    strokeWidth: 2,
-                  ),
+                  child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
                 )
               : Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    if (icon != null) ...[icon!, const SizedBox(width: 8)],
+                    if (widget.icon != null) ...[widget.icon!, const SizedBox(width: 8)],
                     Text(
-                      label,
+                      widget.label,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 0.3,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.2,
                       ),
                     ),
                   ],
@@ -73,7 +87,7 @@ class GradientButton extends StatelessWidget {
   }
 }
 
-//App Card
+// App Card — thick black border, hard offset shadow, no blur.
 
 class AppCard extends StatelessWidget {
   final Widget child;
@@ -104,7 +118,7 @@ class AppCard extends StatelessWidget {
           color: color ?? AppColors.cardBg,
           borderRadius: BorderRadius.circular(borderRadius),
           boxShadow: shadows ?? AppShadows.card,
-          border: border ?? Border.all(color: Colors.black.withValues(alpha: 0.04)),
+          border: border ?? Border.all(color: AppColors.ink, width: 2.5),
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(borderRadius),
@@ -118,7 +132,7 @@ class AppCard extends StatelessWidget {
   }
 }
 
-//Club Avatar
+// Club Avatar
 
 class ClubAvatar extends StatelessWidget {
   final String? imageUrl;
@@ -137,15 +151,23 @@ class ClubAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (imageUrl != null && imageUrl!.isNotEmpty) {
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(AppRadius.md),
-        child: CachedNetworkImage(
-          imageUrl: imageUrl!,
-          width: size,
-          height: size,
-          fit: BoxFit.cover,
-          placeholder: (_, __) => _buildFallback(),
-          errorWidget: (_, __, ___) => _buildFallback(),
+      return Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(AppRadius.md),
+          border: Border.all(color: AppColors.ink, width: 2),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(AppRadius.md - 2),
+          child: CachedNetworkImage(
+            imageUrl: imageUrl!,
+            width: size,
+            height: size,
+            fit: BoxFit.cover,
+            placeholder: (_, __) => _buildFallback(),
+            errorWidget: (_, __, ___) => _buildFallback(),
+          ),
         ),
       );
     }
@@ -158,8 +180,9 @@ class ClubAvatar extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        gradient: AppColors.primaryGradient,
+        color: color ?? AppColors.primary,
         borderRadius: BorderRadius.circular(AppRadius.md),
+        border: Border.all(color: AppColors.ink, width: 2),
       ),
       child: Center(
         child: Text(
@@ -175,7 +198,7 @@ class ClubAvatar extends StatelessWidget {
   }
 }
 
-//Status Chip 
+// Status Chip — pill, thick border, dot indicator.
 
 class StatusChip extends StatelessWidget {
   final String label;
@@ -205,25 +228,26 @@ class StatusChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.12),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(AppRadius.full),
+        border: Border.all(color: AppColors.ink, width: 1.5),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 5,
-            height: 5,
+            width: 6,
+            height: 6,
             decoration: BoxDecoration(color: color, shape: BoxShape.circle),
           ),
           const SizedBox(width: 5),
           Text(
             label,
             style: TextStyle(
-              color: color,
+              color: AppColors.ink,
               fontSize: fontSize,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 0.3,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.2,
             ),
           ),
         ],
@@ -232,7 +256,7 @@ class StatusChip extends StatelessWidget {
   }
 }
 
-//Section Header 
+// Section Header — chunky rounded display font.
 
 class SectionHeader extends StatelessWidget {
   final String title;
@@ -258,9 +282,9 @@ class SectionHeader extends StatelessWidget {
             child: Text(
               actionLabel!,
               style: const TextStyle(
-                color: AppColors.accent,
+                color: AppColors.primary,
                 fontSize: 13,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ),
@@ -269,7 +293,7 @@ class SectionHeader extends StatelessWidget {
   }
 }
 
-//Shimmer Loader
+// Shimmer Loader
 
 class ShimmerBox extends StatelessWidget {
   final double width;
@@ -286,21 +310,22 @@ class ShimmerBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.grey.shade200,
-      highlightColor: Colors.grey.shade100,
+      baseColor: AppColors.surfaceVariant,
+      highlightColor: Colors.white,
       child: Container(
         width: width,
         height: height,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(borderRadius),
+          border: Border.all(color: AppColors.ink.withValues(alpha: 0.15), width: 2),
         ),
       ),
     );
   }
 }
 
-//Empty State
+// Empty State
 
 class EmptyState extends StatelessWidget {
   final String title;
@@ -327,13 +352,14 @@ class EmptyState extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              width: 72,
-              height: 72,
+              width: 76,
+              height: 76,
               decoration: BoxDecoration(
-                gradient: AppColors.cardGradient,
+                color: AppColors.primaryLighter,
                 borderRadius: BorderRadius.circular(AppRadius.xl),
+                border: Border.all(color: AppColors.ink, width: 2.5),
               ),
-              child: Icon(icon, size: 32, color: AppColors.accent),
+              child: Icon(icon, size: 32, color: AppColors.primary),
             ),
             const SizedBox(height: AppSpacing.lg),
             Text(
@@ -349,7 +375,7 @@ class EmptyState extends StatelessWidget {
             ),
             if (actionLabel != null) ...[
               const SizedBox(height: AppSpacing.xl),
-              GradientButton(label: actionLabel!, onTap: onAction, width: 160),
+              GradientButton(label: actionLabel!, onTap: onAction, width: 170),
             ],
           ],
         ),
@@ -358,7 +384,7 @@ class EmptyState extends StatelessWidget {
   }
 }
 
-// App Search Bar
+// App Search Bar — thick border pill/rounded field.
 
 class AppSearchBar extends StatelessWidget {
   final String hint;
@@ -376,9 +402,9 @@ class AppSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surfaceVariant,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(AppRadius.md),
-        border: Border.all(color: Colors.black.withValues(alpha: 0.06)),
+        border: Border.all(color: AppColors.ink, width: 2.5),
       ),
       child: TextField(
         controller: controller,
@@ -386,7 +412,7 @@ class AppSearchBar extends StatelessWidget {
         style: const TextStyle(fontSize: 14, color: AppColors.textPrimary),
         decoration: InputDecoration(
           hintText: hint,
-          prefixIcon: const Icon(Icons.search, color: AppColors.textMuted, size: 20),
+          prefixIcon: const Icon(Icons.search, color: AppColors.ink, size: 20),
           border: InputBorder.none,
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
@@ -443,7 +469,7 @@ class _DebouncedSearchBarState extends State<DebouncedSearchBar> {
   }
 }
 
-//Gradient Badge
+// Category Badge — solid-tint pill, thin ink border.
 
 class CategoryBadge extends StatelessWidget {
   final String label;
@@ -463,7 +489,7 @@ class CategoryBadge extends StatelessWidget {
       case 'literary':
         return AppColors.literary;
       default:
-        return AppColors.accent;
+        return AppColors.primary;
     }
   }
 
@@ -472,22 +498,23 @@ class CategoryBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
       decoration: BoxDecoration(
-        color: _color.withValues(alpha: 0.1),
+        color: _color.withValues(alpha: 0.14),
         borderRadius: BorderRadius.circular(AppRadius.full),
+        border: Border.all(color: _color, width: 1.2),
       ),
       child: Text(
         label,
         style: TextStyle(
           color: _color,
           fontSize: 11,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w700,
         ),
       ),
     );
   }
 }
 
-//Network Image with Shimmer
+// Network Image with Shimmer
 
 class NetworkImageWidget extends StatelessWidget {
   final String? imageUrl;
@@ -512,7 +539,7 @@ class NetworkImageWidget extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          gradient: AppColors.cardGradient,
+          color: AppColors.primaryLighter,
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: const Icon(Icons.image_outlined, color: AppColors.textMuted),
@@ -526,8 +553,8 @@ class NetworkImageWidget extends StatelessWidget {
         height: height,
         fit: fit,
         placeholder: (_, __) => Shimmer.fromColors(
-          baseColor: Colors.grey.shade200,
-          highlightColor: Colors.grey.shade100,
+          baseColor: AppColors.surfaceVariant,
+          highlightColor: Colors.white,
           child: Container(color: Colors.white, width: width, height: height),
         ),
         errorWidget: (_, __, ___) => Container(
@@ -541,7 +568,7 @@ class NetworkImageWidget extends StatelessWidget {
   }
 }
 
-//Info Row
+// Info Row
 
 class InfoRow extends StatelessWidget {
   final IconData icon;
@@ -569,6 +596,48 @@ class InfoRow extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+// Stat Pill — the flame/trophy/sparkle icon-badge chips seen in the reference UI.
+
+class StatPill extends StatelessWidget {
+  final IconData icon;
+  final Color iconColor;
+  final String value;
+
+  const StatPill({
+    super.key,
+    required this.icon,
+    required this.value,
+    this.iconColor = AppColors.primary,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(AppRadius.full),
+        border: Border.all(color: AppColors.ink, width: 2),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 16, color: iconColor),
+          const SizedBox(width: 6),
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+              color: AppColors.ink,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

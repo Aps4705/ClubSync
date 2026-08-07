@@ -52,6 +52,7 @@ class TeamUpScreen extends ConsumerWidget {
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                         decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                           gradient: AppColors.primaryGradient,
                           borderRadius: BorderRadius.circular(AppRadius.md),
                           boxShadow: AppShadows.elevated,
@@ -195,7 +196,7 @@ class _SkillChip extends StatelessWidget {
   }
 }
 
-// ── Changed to ConsumerWidget so we can read currentUser ──────────────────────
+// Changed to ConsumerWidget so we can read currentUser
 class TeamUpPostCard extends ConsumerWidget {
   final TeamUpPost post;
   const TeamUpPostCard({super.key, required this.post});
@@ -233,6 +234,7 @@ class TeamUpPostCard extends ConsumerWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                     color: AppColors.primaryLighter,
                     borderRadius: BorderRadius.circular(AppRadius.full),
                   ),
@@ -412,6 +414,7 @@ class TeamUpPostCard extends ConsumerWidget {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                       gradient: AppColors.primaryGradient,
                       borderRadius: BorderRadius.circular(AppRadius.sm),
                       boxShadow: AppShadows.elevated,

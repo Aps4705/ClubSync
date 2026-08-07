@@ -131,6 +131,7 @@ class EventHomeCard extends StatelessWidget {
             width: 52,
             height: 52,
             decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
               gradient: AppColors.primaryGradient,
               borderRadius: BorderRadius.circular(AppRadius.md),
             ),
@@ -195,7 +196,8 @@ class HackathonCard extends StatelessWidget {
             // Banner
             Container(
               height: 90,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                 gradient: LinearGradient(
                   colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
                   begin: Alignment.topLeft,

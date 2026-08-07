@@ -65,6 +65,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: Container(
               padding: const EdgeInsets.fromLTRB(24, 24, 24, 48),
               decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                 gradient: LinearGradient(
                   colors: [Colors.transparent, Colors.black.withValues(alpha: 0.4)],
                   begin: Alignment.topCenter,
@@ -82,6 +83,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       width: _current == i ? 24 : 8,
                       height: 8,
                       decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                         color: _current == i ? Colors.white : Colors.white.withValues(alpha: 0.4),
                         borderRadius: BorderRadius.circular(4),
                       ),
@@ -118,6 +120,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             child: Container(
                               padding: const EdgeInsets.symmetric(vertical: 14),
                               decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(12),
                               ),
@@ -132,6 +135,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             child: Container(
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(12),
                                 boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.15), blurRadius: 20)],
@@ -162,7 +166,8 @@ class _SlideView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(gradient: slide.gradient),
+      decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),gradient: slide.gradient),
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(32, 60, 32, 180),

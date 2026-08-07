@@ -17,8 +17,7 @@ class _NotificationSettingsScreenState extends ConsumerState<NotificationSetting
   late Map<String, bool> _prefs;
   bool _saving = false;
 
-  // Snapshot of the values as they were when the screen was opened (or as of
-  // the last successful save), used to detect unsaved changes.
+ 
   late bool _savedMasterEnabled;
   late Map<String, bool> _savedPrefs;
 
@@ -119,11 +118,13 @@ class _NotificationSettingsScreenState extends ConsumerState<NotificationSetting
           children: [
           Container(
             padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: AppShadows.card),
+            decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: AppShadows.card),
             child: Row(children: [
               Container(
                 width: 40, height: 40,
-                decoration: BoxDecoration(gradient: AppColors.primaryGradient, borderRadius: BorderRadius.circular(12)),
+                decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),gradient: AppColors.primaryGradient, borderRadius: BorderRadius.circular(12)),
                 child: const Icon(Icons.notifications_active_outlined, color: Colors.white, size: 20),
               ),
               const SizedBox(width: 12),
@@ -146,7 +147,8 @@ class _NotificationSettingsScreenState extends ConsumerState<NotificationSetting
             child: Text('Notification types', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: AppColors.textSecondary)),
           ),
           Container(
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: AppShadows.card),
+            decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: AppShadows.card),
             child: Column(
               children: _options.asMap().entries.map((entry) {
                 final i = entry.key;
@@ -161,7 +163,8 @@ class _NotificationSettingsScreenState extends ConsumerState<NotificationSetting
                         child: Row(children: [
                           Container(
                             width: 36, height: 36,
-                            decoration: BoxDecoration(color: AppColors.primaryLighter, borderRadius: BorderRadius.circular(10)),
+                            decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: AppColors.primaryLighter, borderRadius: BorderRadius.circular(10)),
                             child: Icon(icon, size: 18, color: AppColors.primary),
                           ),
                           const SizedBox(width: 12),

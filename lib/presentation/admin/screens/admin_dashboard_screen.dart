@@ -226,6 +226,7 @@ class _MetricTile extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: AppShadows.card,
@@ -236,6 +237,7 @@ class _MetricTile extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
               color: color.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(10),
             ),
@@ -282,6 +284,7 @@ class _PostContentTab extends ConsumerWidget {
                   Container(
                     width: 48, height: 48,
                     decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                       color: type.color.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -456,7 +459,8 @@ Future<void> _submit() async {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
@@ -467,7 +471,8 @@ Future<void> _submit() async {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(child: Container(width: 40, height: 4,
-              decoration: BoxDecoration(color: AppColors.textMuted.withValues(alpha: 0.3), borderRadius: BorderRadius.circular(2)))),
+              decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: AppColors.textMuted.withValues(alpha: 0.3), borderRadius: BorderRadius.circular(2)))),
             const SizedBox(height: 16),
             Text('New ${widget.type.title}', style: Theme.of(context).textTheme.headlineLarge),
             const SizedBox(height: 20),
@@ -744,7 +749,8 @@ void _showEditTeam(BuildContext context, WidgetRef ref, ClubModel club) {
           ...members.asMap().entries.map((e) => Container(
             margin: const EdgeInsets.only(bottom: 10),
             padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(color: AppColors.surfaceVariant, borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: AppColors.surfaceVariant, borderRadius: BorderRadius.circular(10)),
             child: Column(children: [
               _Field(label: 'Name', controller: e.value['name'] as TextEditingController),
               const SizedBox(height: 8),
@@ -830,7 +836,8 @@ void _showEditTeam(BuildContext context, WidgetRef ref, ClubModel club) {
             ...achievements.asMap().entries.map((e) => Container(
               margin: const EdgeInsets.only(bottom: 8),
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              decoration: BoxDecoration(color: AppColors.surfaceVariant, borderRadius: BorderRadius.circular(10)),
+              decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: AppColors.surfaceVariant, borderRadius: BorderRadius.circular(10)),
               child: Row(children: [
                 const Icon(Icons.emoji_events_outlined, size: 14, color: AppColors.warning),
                 const SizedBox(width: 8),
@@ -853,7 +860,8 @@ void _showEditTeam(BuildContext context, WidgetRef ref, ClubModel club) {
                 },
                 child: Container(
                   width: 44, height: 44,
-                  decoration: BoxDecoration(gradient: AppColors.primaryGradient, borderRadius: BorderRadius.circular(10)),
+                  decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),gradient: AppColors.primaryGradient, borderRadius: BorderRadius.circular(10)),
                   child: const Icon(Icons.add, color: Colors.white),
                 ),
               ),
@@ -905,7 +913,8 @@ class _Sheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
@@ -913,7 +922,8 @@ class _Sheet extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
           Center(child: Container(width: 40, height: 4,
-            decoration: BoxDecoration(color: AppColors.textMuted.withValues(alpha: 0.3), borderRadius: BorderRadius.circular(2)))),
+            decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: AppColors.textMuted.withValues(alpha: 0.3), borderRadius: BorderRadius.circular(2)))),
           const SizedBox(height: 16),
           Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
           const SizedBox(height: 20),
@@ -951,7 +961,8 @@ class _ManageTile extends StatelessWidget {
       onTap: onTap,
       leading: Container(
         width: 36, height: 36,
-        decoration: BoxDecoration(color: color.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(8)),
+        decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: color.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(8)),
         child: Icon(icon, color: color, size: 18),
       ),
       title: Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
@@ -1023,6 +1034,7 @@ class _EmptyCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
         color: AppColors.surfaceVariant,
         borderRadius: BorderRadius.circular(12),
       ),
@@ -1062,7 +1074,8 @@ class _PostedContentSection extends ConsumerWidget {
             ...events.map((e) => Container(
               margin: const EdgeInsets.only(bottom: 8),
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12), boxShadow: AppShadows.card),
+              decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: Colors.white, borderRadius: BorderRadius.circular(12), boxShadow: AppShadows.card),
               child: Row(children: [
                 Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text(e.title, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
@@ -1093,7 +1106,8 @@ class _PostedContentSection extends ConsumerWidget {
                   },
                   child: Container(
                     padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(color: AppColors.errorBg, borderRadius: BorderRadius.circular(8)),
+                    decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: AppColors.errorBg, borderRadius: BorderRadius.circular(8)),
                     child: const Icon(Icons.delete_outline, color: AppColors.error, size: 16),
                   ),
                 ),

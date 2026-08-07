@@ -77,6 +77,7 @@ class _VerifyEmailScreenState extends ConsumerState<VerifyEmailScreen> {
                 width: 72,
                 height: 72,
                 decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                   gradient: AppColors.primaryGradient,
                   borderRadius: BorderRadius.circular(AppRadius.xl),
                 ),

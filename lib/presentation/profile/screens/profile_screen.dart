@@ -75,7 +75,8 @@ class _ProfileViewState extends ConsumerState<_ProfileView> {
           children: [
             // Blue gradient header
             Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                     gradient: AppColors.heroGradient,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(28),
@@ -135,6 +136,7 @@ class _ProfileViewState extends ConsumerState<_ProfileView> {
                       child: Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                           gradient: AppColors.primaryGradient,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: AppShadows.elevated,
@@ -161,6 +163,7 @@ class _ProfileViewState extends ConsumerState<_ProfileView> {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
           color: const Color(0xFF1A1A2E),
           borderRadius: BorderRadius.circular(16),
           boxShadow: AppShadows.elevated,
@@ -187,13 +190,14 @@ class _ProfileViewState extends ConsumerState<_ProfileView> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                   child: Container(
-                    decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: AppShadows.card),
+                    decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: AppShadows.card),
                     child: Column(children: [
 _ActivityTile(
   icon: Icons.groups_2_outlined,
   label: 'Followed Clubs',
   trailing: '${user.followedClubs.length}',
-  onTap: () => context.push('/profile/followed-clubs'), // ← was () {}
+  onTap: () => context.push('/profile/followed-clubs'), 
 ),
 const Divider(height: 1, indent: 52),
 _ActivityTile(
@@ -217,7 +221,8 @@ _ActivityTile(
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                   child: Container(
-                    decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: AppShadows.card),
+                    decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: AppShadows.card),
 child: Column(children: [
   _ActivityTile(
     icon: Icons.person_outline_rounded,
@@ -262,6 +267,7 @@ class _WhitePill extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
         color: accent ? Colors.white : Colors.white.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(AppRadius.full),
       ),
@@ -283,7 +289,8 @@ class _StatBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14), boxShadow: AppShadows.card),
+      decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),color: Colors.white, borderRadius: BorderRadius.circular(14), boxShadow: AppShadows.card),
       child: Column(children: [
         Icon(icon, color: AppColors.primary, size: 22),
         const SizedBox(height: 6),
@@ -329,6 +336,7 @@ class _ActivityTile extends StatelessWidget {
           Container(
             width: 36, height: 36,
             decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
               color: isDestructive ? AppColors.errorBg : AppColors.primaryLighter,
               borderRadius: BorderRadius.circular(10),
             ),

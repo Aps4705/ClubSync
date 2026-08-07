@@ -46,8 +46,7 @@ class FollowedClubsScreen extends ConsumerWidget {
                 )
               : clubsAsync.when(
                   data: (followed) {
-                    // clubsAsync now already contains only the followed
-                    // clubs (fetched via getClubsByIds), no extra filter needed.
+                    
                     if (followed.isEmpty) {
                       return const EmptyState(
                         title: 'No clubs followed',
@@ -66,6 +65,7 @@ class FollowedClubsScreen extends ConsumerWidget {
                           child: Container(
                             padding: const EdgeInsets.all(14),
                             decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(16),
                               boxShadow: AppShadows.card,

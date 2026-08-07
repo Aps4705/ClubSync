@@ -81,7 +81,8 @@ class _EventDetailView extends StatelessWidget {
                   event.imageUrl != null
                       ? NetworkImageWidget(imageUrl: event.imageUrl)
                       : Container(
-                          decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
+                          decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),gradient: AppColors.primaryGradient),
                           child: const Center(
                             child: Icon(Icons.event_rounded, size: 64, color: Colors.white54),
                           ),
@@ -89,6 +90,7 @@ class _EventDetailView extends StatelessWidget {
                   // Gradient overlay
                   Container(
                     decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                       gradient: LinearGradient(
                         colors: [
                           Colors.transparent,
@@ -119,6 +121,7 @@ class _EventDetailView extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                         decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                           color: AppColors.surfaceVariant,
                           borderRadius: BorderRadius.circular(AppRadius.full),
                         ),
@@ -220,6 +223,7 @@ class _EventDetailView extends StatelessWidget {
 bottomNavigationBar: Container(
   padding: const EdgeInsets.fromLTRB(20, 12, 20, 28),
   decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
     color: Colors.white,
     boxShadow: AppShadows.subtle,
   ),

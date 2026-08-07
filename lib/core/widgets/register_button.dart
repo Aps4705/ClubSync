@@ -35,8 +35,9 @@ class _EventRegisterButtonState extends ConsumerState<EventRegisterButton> {
         decoration: BoxDecoration(
           color: AppColors.surfaceVariant,
           borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: AppColors.ink.withValues(alpha: 0.4), width: 1.5),
         ),
-        child: const Text('Ended', style: TextStyle(color: AppColors.textMuted, fontSize: 12, fontWeight: FontWeight.w500)),
+        child: const Text('Ended', style: TextStyle(color: AppColors.textMuted, fontSize: 12, fontWeight: FontWeight.w600)),
       );
     }
 
@@ -64,8 +65,8 @@ class _EventRegisterButtonState extends ConsumerState<EventRegisterButton> {
           gradient: isRegistered ? null : AppColors.primaryGradient,
           color: isRegistered ? AppColors.successBg : null,
           borderRadius: BorderRadius.circular(widget.fullWidth ? 12 : 8),
-          border: isRegistered ? Border.all(color: AppColors.success.withValues(alpha: 0.3)) : null,
-          boxShadow: isRegistered ? [] : AppShadows.elevated,
+          border: Border.all(color: AppColors.ink, width: 2),
+          boxShadow: isRegistered ? [] : AppShadows.small,
         ),
         child: widget.fullWidth ? Center(child: child) : child,
       ),
@@ -143,7 +144,7 @@ Future<void> _handleTap(BuildContext context, bool isRegistered, String? uid) as
           children: [
             Container(
               width: 64, height: 64,
-              decoration: const BoxDecoration(color: AppColors.successBg, shape: BoxShape.circle),
+              decoration: BoxDecoration(color: AppColors.successBg, shape: BoxShape.circle, border: Border.all(color: AppColors.ink, width: 2)),
               child: const Icon(Icons.check_circle_outline_rounded, color: AppColors.success, size: 36),
             ),
             const SizedBox(height: 16),
@@ -160,8 +161,8 @@ Future<void> _handleTap(BuildContext context, bool isRegistered, String? uid) as
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(vertical: 12),
-                decoration: BoxDecoration(gradient: AppColors.primaryGradient, borderRadius: BorderRadius.circular(12)),
-                child: const Center(child: Text('Done', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600))),
+                decoration: BoxDecoration(gradient: AppColors.primaryGradient, borderRadius: BorderRadius.circular(12), border: Border.all(color: AppColors.ink, width: 2)),
+                child: const Center(child: Text('Done', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700))),
               ),
             ),
           ],

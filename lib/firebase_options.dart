@@ -52,3 +52,4 @@ class DefaultFirebaseOptions {
     authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
   );
 }
+//claude generated have to stuudy this

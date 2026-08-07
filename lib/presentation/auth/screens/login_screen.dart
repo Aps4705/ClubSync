@@ -79,6 +79,7 @@ await ref.read(authServiceProvider).signIn(
                     width: 44,
                     height: 44,
                     decoration: BoxDecoration(
+              border: Border.all(color: AppColors.ink, width: 2),
                       gradient: AppColors.primaryGradient,
                       borderRadius: BorderRadius.circular(AppRadius.md),
                     ),

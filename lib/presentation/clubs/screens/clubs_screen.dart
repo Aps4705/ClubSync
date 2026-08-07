@@ -37,7 +37,7 @@ class ClubsScreen extends ConsumerWidget {
               decoration: BoxDecoration(
               border: Border.all(color: AppColors.ink, width: 2),
                 gradient: AppColors.heroGradient,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(28),
                   bottomRight: Radius.circular(28),
                 ),
@@ -89,14 +89,14 @@ Row(
           // Category chips
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 52,
+              height: 58,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+                padding: const EdgeInsets.fromLTRB(20, 12, 28, 6),
                 children: ['All', ...AppConstants.clubCategories].map((cat) {
                   final selected = category == cat;
                   return Padding(
-                    padding: const EdgeInsets.only(right: 8),
+                    padding: const EdgeInsets.only(right: 14),
                     child: GestureDetector(
                       onTap: () => ref.read(_selectedCategoryProvider.notifier).state = cat,
                       child: AnimatedContainer(
@@ -106,11 +106,11 @@ Row(
                           gradient: selected ? AppColors.primaryGradient : null,
                           color: selected ? null : Colors.white,
                           borderRadius: BorderRadius.circular(AppRadius.full),
-                          border: Border.all(color: selected ? Colors.transparent : const Color(0xFFDDE8F5)),
-                          boxShadow: selected ? AppShadows.elevated : AppShadows.subtle,
+                          border: Border.all(color: AppColors.ink, width: 2),
+                          boxShadow: selected ? AppShadows.small : [],
                         ),
                         child: Text(cat, style: TextStyle(
-                          fontSize: 13, fontWeight: FontWeight.w500,
+                          fontSize: 13, fontWeight: FontWeight.w700,
                           color: selected ? Colors.white : AppColors.textSecondary,
                         )),
                       ),

@@ -189,8 +189,8 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
 
             // Preset skills
             Wrap(
-              spacing: 8,
-              runSpacing: 8,
+              spacing: 12,
+              runSpacing: 12,
               children: AppConstants.skillTags.map((s) {
                 final selected = _selectedSkills.contains(s);
                 return GestureDetector(
@@ -208,13 +208,11 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
                       gradient: selected ? AppColors.primaryGradient : null,
                       color: selected ? null : Colors.white,
                       borderRadius: BorderRadius.circular(AppRadius.full),
-                      border: Border.all(
-                        color: selected ? Colors.transparent : const Color(0xFFDDE8F5),
-                      ),
-                      boxShadow: selected ? AppShadows.elevated : AppShadows.subtle,
+                      border: Border.all(color: AppColors.ink, width: 2),
+                      boxShadow: selected ? AppShadows.small : [],
                     ),
                     child: Text(s, style: TextStyle(
-                      fontSize: 12, fontWeight: FontWeight.w500,
+                      fontSize: 12, fontWeight: FontWeight.w700,
                       color: selected ? Colors.white : AppColors.textSecondary,
                     )),
                   ),

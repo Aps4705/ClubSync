@@ -78,7 +78,7 @@ class _ProfileViewState extends ConsumerState<_ProfileView> {
               decoration: BoxDecoration(
               border: Border.all(color: AppColors.ink, width: 2),
                     gradient: AppColors.heroGradient,
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(28),
                       bottomRight: Radius.circular(28),
                     ),

@@ -1,8 +1,63 @@
 import 'dart:async';
+import 'dart:math' as math;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import '../theme/app_theme.dart';
+
+/// ClubSync brand mark — a chain of interlocking rings forming a "C".
+/// Pure CustomPainter, no asset required. Drop-in replacement for the
+/// old placeholder `Icon(Icons.hub_rounded)`.
+class ClubSyncMark extends StatelessWidget {
+  final double size;
+  final Color color;
+
+  const ClubSyncMark({super.key, this.size = 24, this.color = Colors.white});
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      size: Size(size, size),
+      painter: _ClubSyncMarkPainter(color: color),
+    );
+  }
+}
+
+class _ClubSyncMarkPainter extends CustomPainter {
+  final Color color;
+  const _ClubSyncMarkPainter({required this.color});
+
+  static const double _startDeg = 55;
+  static const double _endDeg = 305;
+  static const int _rings = 6;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final cx = size.width / 2;
+    final cy = size.height / 2;
+    final orbitR = size.width * 0.30;
+    final ringR = size.width * 0.155;
+    final ringW = size.width * 0.085;
+
+    final paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = ringW
+      ..strokeCap = StrokeCap.round
+      ..color = color;
+
+    for (int i = 0; i < _rings; i++) {
+      final t = _startDeg + (_endDeg - _startDeg) * i / (_rings - 1);
+      final rad = t * math.pi / 180;
+      final x = cx + orbitR * math.cos(rad);
+      final y = cy + orbitR * math.sin(rad);
+      canvas.drawCircle(Offset(x, y), ringR, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _ClubSyncMarkPainter oldDelegate) =>
+      oldDelegate.color != color;
+}
 
 // Neo Button — solid fill, thick black border, hard offset shadow.
 // Press animation pushes the button into its own shadow (classic neubrutalist tap).

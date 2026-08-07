@@ -237,7 +237,7 @@ class EventListCard extends StatelessWidget {
               decoration: BoxDecoration(
               border: Border.all(color: AppColors.ink, width: 2),
                 gradient: AppColors.primaryGradient,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(16),
                   bottomLeft: Radius.circular(16),
                 ),

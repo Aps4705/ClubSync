@@ -48,7 +48,7 @@ await ref.read(authServiceProvider).signIn(
 
   String _friendlyError(String raw) {
     if (raw.contains('invalid-email') || raw.contains('kiet.edu')) {
-      return 'Only @kiet.edu email addresses are allowed.';
+      return 'Only @college.edu email addresses are allowed.';
     }
     if (raw.contains('wrong-password') || raw.contains('invalid-credential')) {
       return 'Incorrect email or password.';
@@ -83,7 +83,7 @@ await ref.read(authServiceProvider).signIn(
                       gradient: AppColors.primaryGradient,
                       borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
-                    child: const Icon(Icons.hub_rounded, color: Colors.white, size: 24),
+                    child: Image.asset('assets/images/logo.png', width: 24, height: 24),
                   ),
                   const SizedBox(width: 12),
                   Column(
@@ -91,7 +91,7 @@ await ref.read(authServiceProvider).signIn(
                     children: [
                       Text('ClubSync',
                           style: Theme.of(context).textTheme.headlineLarge),
-                      Text('KIET Campus Platform',
+                      Text('Campus Club Platform',
                           style: Theme.of(context).textTheme.bodySmall),
                     ],
                   ),
@@ -103,7 +103,7 @@ await ref.read(authServiceProvider).signIn(
               Text('Welcome back', style: Theme.of(context).textTheme.displayMedium),
               const SizedBox(height: 8),
               Text(
-                'Sign in with your KIET college email to continue.',
+                'Sign in with your college email to continue.',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
 
@@ -117,7 +117,7 @@ await ref.read(authServiceProvider).signIn(
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
                 decoration: const InputDecoration(
-                  hintText: 'yourname@kiet.edu',
+                  hintText: 'yourname@college.edu',
                   prefixIcon: Icon(Icons.email_outlined, size: 18,
                       color: AppColors.textMuted),
                 ),
@@ -239,7 +239,7 @@ await ref.read(authServiceProvider).signIn(
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        'Access restricted to verified KIET students only. Use your official college email.',
+                        'Access restricted to verified college students only. Use your official college email.',
                         style: TextStyle(
                           color: AppColors.accent.withValues(alpha: 0.8),
                           fontSize: 12,

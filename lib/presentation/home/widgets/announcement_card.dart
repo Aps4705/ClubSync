@@ -198,12 +198,12 @@ class HackathonCard extends StatelessWidget {
               height: 90,
               decoration: BoxDecoration(
               border: Border.all(color: AppColors.ink, width: 2),
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
-                borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.lg)),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(AppRadius.lg)),
               ),
               child: Stack(
                 children: [

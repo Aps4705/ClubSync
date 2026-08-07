@@ -462,7 +462,7 @@ Future<void> _submit() async {
       decoration: BoxDecoration(
               border: Border.all(color: AppColors.ink, width: 2),
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
       ),
       padding: EdgeInsets.fromLTRB(20, 20, 20, MediaQuery.of(context).viewInsets.bottom + 24),
       child: SingleChildScrollView(
@@ -916,7 +916,7 @@ class _Sheet extends StatelessWidget {
       decoration: BoxDecoration(
               border: Border.all(color: AppColors.ink, width: 2),
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
       ),
       padding: EdgeInsets.fromLTRB(20, 20, 20, MediaQuery.of(context).viewInsets.bottom + 24),
       child: SingleChildScrollView(

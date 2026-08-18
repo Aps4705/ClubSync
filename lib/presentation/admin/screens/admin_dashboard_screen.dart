@@ -6,6 +6,7 @@ import '../../../core/theme/app_theme.dart';
 import '../../../core/widgets/widgets.dart';
 import '../../../data/models/models.dart';
 import '../../../data/services/firebase_services.dart';
+import 'edit_club_screen.dart';
 
 class AdminDashboardScreen extends ConsumerStatefulWidget {
   const AdminDashboardScreen({super.key});
@@ -633,6 +634,14 @@ class _ManageTab extends ConsumerWidget {
               AppCard(
                 padding: const EdgeInsets.all(4),
                 child: Column(children: [
+                  _ManageTile(
+                    icon: Icons.tune_outlined, label: 'Edit Club Details',
+                    subtitle: 'Full form — info, team, media, socials, achievements',
+                    color: AppColors.primary,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => EditClubScreen(club: club)),
+                    ),
+                  ),
                   _ManageTile(
                     icon: Icons.edit_outlined, label: 'Edit Club Info',
                     subtitle: 'Name, description, recruitment status',

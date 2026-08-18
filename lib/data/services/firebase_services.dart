@@ -601,6 +601,52 @@ Future<void> updateClubMedia(String clubId, {String? logoUrl, String? bannerUrl}
 Future<void> updateClubInfo(String clubId, Map<String, dynamic> data) =>
     _db.collection(AppConstants.clubsCollection).doc(clubId).update(data);
 
+// Create a new club
+Future<void> createClub({
+  required String name,
+  required String category,
+  required String description,
+  List<String> domains = const [],
+  String headName = '',
+  String headEmail = '',
+  String recruitmentStatus = 'closed',
+  String? logoUrl,
+  String? bannerUrl,
+  List<Map<String, String>> socialLinks = const [],
+  List<String> achievements = const [],
+  List<Map<String, dynamic>> members = const [],
+}) async {
+  final docRef = _db.collection(AppConstants.clubsCollection).doc();
+  await docRef.set(
+    ClubModel(
+      id: docRef.id,
+      name: name,
+      category: category,
+      description: description,
+      logoUrl: logoUrl,
+      bannerUrl: bannerUrl,
+      domains: domains,
+      coreTeam: CoreTeam(
+        headName: headName,
+        headAvatarUrl: '',
+        headEmail: headEmail,
+        members: members
+            .map((m) => CoreMember(
+                  name: m['name'] as String,
+                  role: m['role'] as String,
+                  avatarUrl: m['avatarUrl'] as String?,
+                ))
+            .toList(),
+      ),
+      recruitmentStatus: recruitmentStatus,
+      socialLinks: socialLinks.map((s) => SocialLink(platform: s['platform']!, url: s['url']!)).toList(),
+      achievements: achievements,
+      adminUid: '',
+      createdAt: DateTime.now(),
+    ).toFirestore(),
+  );
+}
+
     Stream<Map<String, dynamic>> getRealClubAnalytics(String clubId) {
   return _db.collection(AppConstants.clubsCollection).doc(clubId).snapshots().map((doc) {
     final data = doc.data() ?? {};
